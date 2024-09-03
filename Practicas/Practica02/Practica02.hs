@@ -1,9 +1,15 @@
-potenciaLista :: [Int] -> [Int]
-potenciaLista [] = []
-potenciaLista lista = [x^2 | x <- lista]
+longitud :: [x] -> Int
+longitud [] = 0
+longitud (x : xs) = 1 + longitud(xs)
+
+sumaLista :: Num x => [x] -> x
+sumaLista [] = 0
+sumaLista (x : xs) = x + sumaLista(xs)
 
 agregaElemento :: [x] -> x -> Bool -> [x]
-agregaElemento [] x _ = [x]
-agregaElemento lista x insertarAlPrincipioOFinal
-  | insertarAlPrincipioOFinal = x : lista
-  | otherwise = lista ++ [x] 
+agregaElemento x xs True  = xs : x
+agregaElemento x xs False = x ++ [xs]
+
+
+
+
