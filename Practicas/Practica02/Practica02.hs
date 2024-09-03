@@ -1,14 +1,15 @@
-longitud :: [x] -> Int
+longitud :: [a] -> Int
 longitud [] = 0
 longitud (x : xs) = 1 + longitud(xs)
 
-sumaLista :: Num x => [x] -> x
+sumaLista :: Num a => [a] -> a
 sumaLista [] = 0
 sumaLista (x : xs) = x + sumaLista(xs)
 
-agregaElemento :: [x] -> x -> Bool -> [x]
-agregaElemento x xs True  = xs : x
-agregaElemento x xs False = x ++ [xs]
+agregaElemento :: [a] -> a -> Bool -> [a]
+agregaElemento lista elemento True  = elemento : lista
+agregaElemento lista elemento False = lista ++ [elemento]
+
 
 
 
