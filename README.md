@@ -3,7 +3,7 @@ En este repositorio se encuentran las prácticas que se llevaran a lo largo del 
 de Estructuras Discretas 2025:
 ## Prácticas:
 * Práctica 1. Creación de funciones y uso de la condicional IfThenElse.
-* Practica 2. Listas, Recursión y Listas por comprehensión
+* Practica 2. Listas, Recursión y Listas por comprehensión.
 
 ## Alumno:
 Micael Nolasco Flores
