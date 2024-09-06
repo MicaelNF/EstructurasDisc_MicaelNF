@@ -39,8 +39,9 @@ conjunto :: Eq a => [a] -> [a] --Esta funcion genera una lista sin elementos rep
 conjunto [] = []
 conjunto (x : xs) = x : conjunto[y | y <- xs, y /= x]
 
+numerosPares :: Num a => [a] -> [a]
+numerosPares [] = []
+numerosPares xs = [x | x <- xs]
 
 
---numerosPares :: Num a => [a] -> [a]
---numerosPares _ = undefined
 
