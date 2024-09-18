@@ -17,31 +17,47 @@ maximoLista [] = 0
 maximoLista (x : xs) =
   if x > maximoLista(xs)
     then x
-    else maximoLista(xs)
+  else maximoLista(xs)
 
-indice :: [a] -> Int -> a --Busca la posicion en la que se encuntra cierto elemento en una lista a partir de un numero entero dado.
-indice (x : _) 0 = x 
-indice (_ : xs) numero = indice(xs) (numero-1)
+indice :: [a] -> Int -> a --Busca la posición en la que se encuntra cierto elemento en una lista a partir de un número entero dado.
+indice (x : xs) numero =
+  if (numero > 0) && (numero <= longitud(xs)) --No reste 1 ya que al quitar un elemento de la lista es como restarle uno.
+  then indice(xs) (numero-1)
+  else if numero == 0
+  then x
+  else error "Número no válido"
 
 --------------- Listas por comprehensión ---------------
 
-divisores :: Int -> [Int] --Esta función calcula y genera una lista de los números que pueden dividir a cierto numero dado .
+divisores :: Int -> [Int] --Esta función calcula y genera una lista de los números que pueden dividir a cierto numero dado.
 divisores 0 = []
 divisores xs = [x | x <- auxiliarDeDivisores(xs), mod xs x == 0]
 
-auxiliarDeDivisores :: Int -> [Int] --Esta es una funcion que genera una lista que necesita la funcion "divisores".
+auxiliarDeDivisores :: Int -> [Int] --Esta es una función que genera una lista que necesita la función "divisores".
 auxiliarDeDivisores x =
-  if x < 1
+  if x == 0
     then []
-    else x : auxiliarDeDivisores (x - 1)
+  else if x > 0
+  then x : auxiliarDeDivisores (x - 1) -- Este caso es para los positivos.
+  else x : auxiliarDeDivisores (x + 1) -- Este caso es para los negativos.
 
-conjunto :: Eq a => [a] -> [a] --Esta funcion genera una lista sin elementos repetidos.
+conjunto :: Eq a => [a] -> [a] --Esta función genera una lista sin elementos repetidos.
 conjunto [] = []
 conjunto (x : xs) = x : conjunto[y | y <- xs, y /= x]
+-- Pequeño ejemplo que use para verificar que estuviera bien mi recursión y entenderla mejor.
+-- (1,2,2,3)
+-- conjunto (1 : [2,2,3]) = 1 : conjunto[y | y <- [2,2,3], y /= x] = conjunto [2,2,3]
+-- conjunto (2 : [2,3]) = 2 : conjunto[y | y <- [2,3], y /= x] = conjunto [3]
+-- conjunto (3 : []) = 3 : conjunto[y | y <- [], y /= x] = []
+-- conjunto []
+-- Resolviendolo queda como:
+-- 3 : [] = [3]
+-- 2 : [2] = [2,3]
+-- 1 : [2,3] = [1,2,3]
 
-numerosPares :: Num a => [a] -> [a]
-numerosPares [] = []
-numerosPares xs = [x | x <- xs]
+numerosPares :: [Int] -> [Int] --Esta función regresa una lista con solo números pares de la lista original.
+numerosPares xs = [x | x <- xs, mod x 2 == 0]
+
 
 
 
