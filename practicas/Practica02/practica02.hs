@@ -16,6 +16,7 @@ agregaElemento lista elemento posInicio = --Reduje la función a un solo caso.
 
 maximoLista :: (Num a, Ord a) => [a] -> a --Calcula el valor máximo de una lista
 maximoLista [] = error "Lista está vacia" --Cambie el caso base.
+maximoLista [a] = a --Agregue un caso en el que solo hay un elemento por ende es el máximo.
 maximoLista (x : xs) =
   if x > maximoLista(xs)
     then x
@@ -25,15 +26,14 @@ indice :: [a] -> Int -> a --Busca la posición en la que se encuntra cierto elem
 indice [] numero = error "Lista esta vacia" --Agregue un caso base para una lista vacía.
 indice (x : xs) numero =
   if (numero > 0) && (numero <= longitud(xs)) --No reste 1 ya que al quitar un elemento de la lista es como restarle uno.
-  then indice(xs) (numero-1)
+    then indice(xs) (numero-1)
   else if numero == 0
-  then x
+    then x
   else error "Número no válido"
 
 --------------- Listas por comprehensión ---------------
-
+-------Elimine un caso base inncesario.-------
 divisores :: Int -> [Int] --Esta función calcula y genera una lista de los números que pueden dividir a cierto numero dado.
-divisores 0 = []
 divisores n = [x | x <- [1..n], mod n x == 0] --Use [1..n] para generar una lista sin depender de una función auxiliar.
 
 conjunto :: Eq a => [a] -> [a] --Esta función genera una lista sin elementos repetidos.
