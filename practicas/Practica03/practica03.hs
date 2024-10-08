@@ -30,11 +30,8 @@ eliminarIndice :: List a -> Int -> List a
 eliminarIndice Void n = error "Tu lista esta vacía."
 eliminarIndice (Node x xs) 0 = xs
 eliminarIndice (Node x xs) n =
-  if n < 0 
-    then error "Indice fuera del rango permitido."
-  else if n < longitud(Node x xs)
+  if (n > 0) && (n < longitud(Node x xs))
     then Node x (eliminarIndice xs (n-1))
-  else error "Indice fuera del rango permitido."
 
 insertarIndice :: List a -> Int -> a -> List a
 insertarIndice Void n elemento = Node elemento Void
