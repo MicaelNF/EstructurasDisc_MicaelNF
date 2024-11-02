@@ -12,6 +12,7 @@ profundidad (Raiz a izq der) = 1 + max (profundidad(izq)) (profundidad(der))
 
 -------------------- EJERCICIO 3 --------------------
 ancho :: Arbol a -> Int
+ancho ArbolVacio = 0 -- Caso de que desde la consola le pasen un árbol vacío
 ancho (Raiz a ArbolVacio ArbolVacio) = 1
 ancho (Raiz a izq der) = ancho(izq) + ancho(der)
 
