@@ -5,6 +5,7 @@ de Estructuras Discretas 2025:
 * Práctica 1. Creación de funciones y uso de la condicional IfThenElse.
 * Practica 2. Listas, Recursión y Listas por comprehensión.
 * Práctica 3. Creación de tipos en Haskell.
+* Práctica 4. Creación de tipos en Haskell (Parte 2).
 
 ## Alumno:
 Micael Nolasco Flores
