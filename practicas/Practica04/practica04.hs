@@ -59,23 +59,29 @@ maximo (Raiz a izq der) =
 
 -------------------- EJERCICIO 8 --------------------
 eliminar :: Ord a => Arbol a -> a -> Arbol a 
-eliminar ArbolVacio elemento = error "No puedes eleminar algo de un árbol vacío"
+eliminar ArbolVacio elemento = error "No puedes eleminar algo de un árbol vacío" -- Caso que desde la terminal le pasen un ábol vacío.
 eliminar (Raiz a ArbolVacio ArbolVacio) elemento =
   if a == elemento
     then ArbolVacio
   else error "El elemento a eliminar no se encuentra dentro del árbol"
+  
+-- Caso de un nodo con un árbol izquierdo.
 eliminar (Raiz a izq ArbolVacio) elemento =
   if elemento == a
     then izq
   else if elemento < a
     then Raiz a (eliminar izq elemento) ArbolVacio
   else error "El elemento a eliminar no se encuentra dentro del árbol"
+  
+-- Caso de un nodo con un árbol derecho.
 eliminar (Raiz a ArbolVacio der) elemento =
   if elemento == a 
     then der
   else if elemento > a
     then Raiz a ArbolVacio (eliminar der elemento)
   else error "El elemento a eliminar no se encuentra dentro del árbol"
+  
+-- Caso de un nodo que tenga ambos árboles.
 eliminar (Raiz a izq der) elemento =
   if elemento == a
     then Raiz (minimo der) izq (eliminar der (minimo der))
