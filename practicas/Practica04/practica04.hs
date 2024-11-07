@@ -38,8 +38,22 @@ combinarNiveles xs [] = xs
 combinarNiveles (x:xs) (y:ys) = (x ++ y) : combinarNiveles (xs) (ys)
 
 -------------------- EJERCICIO 6 --------------------
-minimo :: Ord a => Arbol a -> a  
+minimo :: Ord a => Arbol a -> a
+minimo ArbolVacio = error "No existe un elemento mínimo en un árbol vacío."
 minimo (Raiz a ArbolVacio ArbolVacio) = a
+
+-- Caso de un nodo con un árbol izquierdo.
+minimo (Raiz a izq ArbolVacio) =
+  if a <= minimo(izq)
+    then a
+    else minimo(izq)
+
+-- Caso de un nodo con un árbol derecho.            
+minimo (Raiz a ArbolVacio der) = if a <= minimo(der)
+    then a
+    else minimo(der)
+
+-- Caso de un nodo que tenga ambos árboles.         
 minimo (Raiz a izq der) =
   if a <= minimo(izq) && a <= minimo(der)
     then a
@@ -48,8 +62,21 @@ minimo (Raiz a izq der) =
   else minimo(der)
 
 -------------------- EJERCICIO 7 --------------------
-maximo :: Ord a => Arbol a -> a 
+maximo :: Ord a => Arbol a -> a
+maximo ArbolVacio = error "No existe un elemento máximo en un árbol vacío."
 maximo (Raiz a ArbolVacio ArbolVacio) = a
+
+-- Caso de un nodo con un árbol izquierdo.
+maximo (Raiz a izq ArbolVacio) = if a >= maximo(izq)
+    then a
+    else maximo(izq)
+         
+-- Caso de un nodo con un árbol derecho.         
+maximo (Raiz a ArbolVacio der) = if a >= maximo(der)
+    then a
+    else maximo(der)
+
+-- Caso de un nodo que tenga ambos árboles.
 maximo (Raiz a izq der) =
   if a >= maximo(izq) && a >= maximo(der)
     then a
