@@ -6,6 +6,7 @@ de Estructuras Discretas 2025:
 * Practica 2. Listas, Recursión y Listas por comprehensión.
 * Práctica 3. Creación de tipos en Haskell.
 * Práctica 4. Creación de tipos en Haskell (Parte 2).
+* Práctica Final.
 
 ## Alumno:
 Micael Nolasco Flores
