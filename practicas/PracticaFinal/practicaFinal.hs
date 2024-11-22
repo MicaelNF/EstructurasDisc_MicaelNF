@@ -1,20 +1,3 @@
-{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
-{-# HLINT ignore "Use foldr" #-}
-{-# HLINT ignore "Redundant bracket" #-}
-{-# HLINT ignore "Use map" #-}
-import Data.Char (GeneralCategory(Format))
-import GHC.Exts.Heap (GenClosure(var))
-import Control.Monad (forM)
-import Distribution.System (Arch)
-import Foreign.C (errnoToIOError)
-import Distribution.SPDX (LicenseId(LiLiQ_Rplus_1_1))
-import Distribution.Simple (KnownExtension(ExistentialQuantification))
-import Distribution.Simple.Program.HcPkg (list)
-import Distribution.Simple.InstallDirs (combineInstallDirs)
-import Data.Traversable (for)
-import Data.IntMap.Merge.Lazy (contramapFirstWhenMatched)
-import Data.ByteString.Builder (formatDouble)
-
 data Var = A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z deriving (Show, Eq, Ord)
 
 data Formula = Atom Var
@@ -126,11 +109,11 @@ contador (x : xs) = 1 + contador xs
 
 -------------------- EJERCICIO 6 --------------------
 tablaDeVerdad :: Formula -> [([(Var,Bool)],Bool)]
-tablaDeVerdad formula = evaluarMultiplesElementos (formula) (combinaciones formula)
+tablaDeVerdad formula = evaluarMultiplesElementos formula (combinaciones formula)
 
 evaluarMultiplesElementos :: Formula -> [[(Var,Bool)]] -> [([(Var,Bool)],Bool)]
 evaluarMultiplesElementos formula [] = []
-evaluarMultiplesElementos formula (x : xs) = (x , (interpretacion formula x)) : evaluarMultiplesElementos formula xs
+evaluarMultiplesElementos formula (x : xs) = (x , interpretacion formula x) : evaluarMultiplesElementos formula xs
 -----------------------------------------------------
 
 
