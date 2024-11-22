@@ -115,5 +115,3 @@ evaluarMultiplesElementos :: Formula -> [[(Var,Bool)]] -> [([(Var,Bool)],Bool)]
 evaluarMultiplesElementos formula [] = []
 evaluarMultiplesElementos formula (x : xs) = (x , interpretacion formula x) : evaluarMultiplesElementos formula xs
 -----------------------------------------------------
-
-
