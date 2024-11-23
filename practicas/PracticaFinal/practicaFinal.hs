@@ -49,7 +49,7 @@ equivalencia (formula1 :<=>: formula2) = negacion ((formula1 :&: negacion formul
 -------------------- EJERCICIO 4 --------------------
 interpretacion :: Formula -> [(Var, Bool)] -> Bool
 interpretacion formula valores = if sonIguales (variables formula) (extraerVariables valores)
-                                    then evalua formula valores
+                                    then evalua (equivalencia formula) valores
                                     else error "No todas las variables están definidas."
 
 evalua :: Formula -> [(Var, Bool)] -> Bool
@@ -57,8 +57,6 @@ evalua (Atom elemento) valores = buscaValor elemento valores
 evalua (Neg f) valores = not (evalua f valores)
 evalua (f1 :&: f2) valores = evalua f1 valores && evalua f2 valores
 evalua (f1 :|: f2) valores = evalua f1 valores || evalua f2 valores
-evalua (f1 :=>: f2) valores = not (evalua f1 valores) || evalua f2 valores
-evalua (f1 :<=>: f2) valores = evalua f1 valores == evalua f2 valores
 
 buscaValor :: Var -> [(Var, Bool)] -> Bool
 buscaValor var ((valorLista, booleano) : xs) = if var == valorLista
